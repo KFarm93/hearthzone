@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+<div>
+  <h1 class="whiteText bigger">{{name}}</h1>
+  <img src={{image_path}} class="cardPic bigger"></img>
+  <p class="whiteText bigger">TYPE: {{type}}</p>
+  <p class="whiteText bigger">CLASS: {{clas}}</p>
+  <p class="whiteText bigger">SET: {{set}}</p>
+  <p class="whiteText bigger">RARITY: {{rarity}}</p>
+  <span class="italicize whiteText bigger"><p>{{desc}}</p></span>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <div id="signup-div">
+    <form action="/submit_signup" method="POST">
+      <div id="inner-div">
+        <label for="" class="blackText bigger">Username</label><br>
+        <input type="text" name="username" value=""><br>
+        <label for="" class="blackText bigger">Password</label><br>
+        <input type="password" name="password1" value=""><br>
+        <label for="" class="blackText bigger">Confirm Password</label><br>
+        <input type="password" name="password2" value=""><br>
+        <button type="submit" name="button_login" class="btn btn-success signup-button">Sign Up</button>
+        {% if error %}
+          <label class="redText">**{{error_message}}**</label>
+        {% endif %}
+      </div>
+    </form>
+  </div>
+{% endblock %}

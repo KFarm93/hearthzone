@@ -1,0 +1,155 @@
+body {
+  background-image: url("images/hearth_wp1.jpg");
+}
+
+#header {
+  display: inline-block;
+  font-size: 4em;
+  margin-left: 5%;
+  margin-top: 15px;
+}
+
+.message {
+  margin-left: 5%;
+}
+
+.whiteText {
+  color: white;
+  text-shadow: 3px 3px black;
+  font-family: 'Amita', cursive;
+}
+
+.blackText {
+  font-family: 'Amita', cursive;
+  color: black;
+}
+
+.bigger {
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+
+#signInForm {
+  float: right;
+  margin-right: 5%;
+  margin-top: 15px;
+  background-color: lightgrey;
+  padding: 20px 40px;
+  border: 5px solid darkgrey;
+  border-radius: 5px;
+}
+
+.login-button {
+  font-family: 'Amita', cursive;
+  margin-top: 5%;
+}
+
+.signup-button {
+  font-family: 'Amita', cursive;
+  margin-top: 2%;
+}
+
+#signup-div {
+  width: 800px;
+  height: 600px;
+  margin: 150px auto;
+}
+
+#inner-div {
+  width: 400px;
+  height: 300px;
+  margin: auto;
+  padding: 25px 50px;
+  background-color: lightgrey;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+
+#signed-in {
+  float: right;
+  margin-right: 5%;
+  margin-top: 15px;
+  background-color: lightgrey;
+  padding: 20px 40px;
+  border: 5px solid darkgrey;
+  border-radius: 5px;
+}
+
+.redText {
+  font-family: 'Amita', cursive;
+  color: red;
+}
+
+#deckButton {
+  color: black;
+  text-shadow: 0 0;
+  font-family: 'Amita', cursive;
+  font-size: 1.2em;
+}
+
+#profileButton {
+  color: black;
+  text-shadow: 0 0;
+  font-family: 'Amita', cursive;
+  font-size: 1.2em;
+}
+
+#logoutButton {
+  color: black;
+  text-shadow: 0 0;
+  font-family: 'Amita', cursive;
+  font-size: 1.2em;
+}
+
+#loginButton {
+  color: black;
+  font-family: 'Amita', cursive;
+  margin-top: 7%;
+}
+
+#signUpButton {
+  color: black;
+  font-family: 'Amita', cursive;
+  margin-top: 7%;
+}
+
+#deckSelectorDiv {
+  width: 92%;
+  height: 50px;
+  margin: 50px auto 0 auto;
+  border: 2px solid black;
+  background-color: rgba(0,0,0,0.3);
+}
+
+#cardsDiv {
+  width: 92%;
+  height: 550px;
+  margin: 0 auto 0 auto;
+  border: 2px solid black;
+  background-color: rgba(0,0,0,0.3);
+}
+
+#whichDeck {
+  float: right;
+  margin: 14px 50px 0 0;
+  width: 75px;
+}
+
+.searchBar {
+  margin-right: 5px;
+  width: 60%;
+  font-size: 1.2em;
+}
+
+#searchForm {
+  margin: 5px;
+  padding: 2px;
+}
+
+.italicize {
+  font-style: italic;
+}
+
+.cardPic {
+  float: left;
+}

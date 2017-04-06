@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hearthzone.com</title>
+    <link rel="stylesheet" href="/static/style.css" media="screen" title="no title">
+    <link href="https://fonts.googleapis.com/css?family=Amita" rel="stylesheet">
+    <link rel="stylesheet" href="/static/bootstrap.css">
+  </head>
+  <body>
+    <h1 id="header" class="whiteText">Hearthzone.com</h1>
+    {% block body %}
+      {% if session['username'] %}
+        <div id="signed-in">
+          | <a href="/deck" class="btn btn-warning" id="deckButton">My Decks</a> |
+          <a href="/profile" class="btn btn-info" id="profileButton">My Profile</a> |
+          <a href="/logout" class="btn btn-danger" id="profileButton">Log Out</a> |
+          <form id="searchForm" action="/search" method="POST">
+            <input type="text" class="searchBar" name="search-term">
+            <button type="submit" class="btn btn-primary" id="profileButton">Search</button>
+          </form>
+        </div>
+        <h2 class="whiteText message">{{message}}</h2>
+        <div id="deckSelectorDiv">
+          <select id="whichDeck">
+            <option value="deck1">Deck1</option>
+            <option value="deck2">Deck2</option>
+            <option value="deck3">Deck3</option>
+          </select>
+        </div>
+        <div id="cardsDiv">
+
+        </div>
+
+      {% else %}
+      <div id="signInForm">
+        <form action="/signin" method="POST">
+          <label for="" class="blackText bigger">Username</label><br>
+          <input type="text" name="username" value=""><br>
+          <label for="" class="blackText bigger">Password</label><br>
+          <input type="password" name="password" value=""><br>
+          <button type="submit" name="button_login" class="btn btn-success" id="loginButton">Login</button>
+          <a href="/signup" class="btn btn-info" id="signUpButton">Sign Up</a>
+        </form>
+      </div>
+      <h2 class="whiteText message">{{message}}</h2>
+      {% endif %}
+    {% endblock %}
+  </body>
+</html>
