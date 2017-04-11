@@ -4,6 +4,7 @@ import os
 import time
 import unirest
 import collections
+from ast import literal_eval
 
 app = Flask('checkMyDeck')
 app.secret_key = 'Super Secret Key'
@@ -19,7 +20,7 @@ cursor = conn.cursor()
 
 def convert(data):
     if isinstance(data, basestring):
-        return str(data)
+        return data.encode('utf-8')
     elif isinstance(data, collections.Mapping):
         return dict(map(convert, data.iteritems()))
     elif isinstance(data, collections.Iterable):
@@ -79,7 +80,7 @@ def signin():
     if entered_password == password:
         session['username'] = entered_username
         # set session name
-        return render_template('layout.html', message="%s's Decks") % session['username']
+        return render_template('deck-view.html')
     else:
         return render_template('layout.html', message='Incorrect password!')
 
@@ -89,19 +90,38 @@ def logout():
     del session['username']
     return redirect('/')
 
-@app.route('/search', methods=["POST", "GET"])
+@app.route('/search', methods=["POST"])
 def search():
     searchTerm = request.form.get('search-term')
-    print searchTerm
-    response = unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards/" + searchTerm,
+    response = unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/" + searchTerm,
         headers = {
             "X-Mashape-Key": "kwOvBij0LymshHBSreEfodjU6zIsp1bojDujsntTYcApcvprMR",
             "Accept": "application/json"
         }
     )
-    converted_resp = convert(response.body[0])
-    print converted_resp
-    return render_template('card-info.html', image_path=converted_resp['img'], type=converted_resp['type'], set=converted_resp['cardSet'], rarity=converted_resp['rarity'], desc=converted_resp['flavor'], clas=converted_resp['playerClass'])
+    results = convert(response.body)
+    print "RESULTS:"
+    results_num = len(results)
+    return render_template('search-results.html', results=results, results_num=results_num, search_term=searchTerm)
+
+
+@app.route('/card-info', methods=["POST"])
+def cardInfo():
+    card = request.form.get('card')
+    real_card = literal_eval(card)
+    def findMissingInfo(key):
+        try:
+            real_card[key]
+        except KeyError:
+            real_card[key] = '**Not Available / Not Applicable**'
+
+    findMissingInfo('img')
+    findMissingInfo('type')
+    findMissingInfo('cardSet')
+    findMissingInfo('rarity')
+    findMissingInfo('flavor')
+    findMissingInfo('playerClass')
+    return render_template('card-info.html', image_path=real_card['img'], type=real_card['type'], set=real_card['cardSet'], rarity=real_card['rarity'], desc=real_card['flavor'], clas=real_card['playerClass'])
 
 
 if __name__ == '__main__':

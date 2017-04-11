@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2 class="whiteText message">{{session['username']}}'s Decks</h2>
+<div id="deckSelectorDiv">
+  <select id="whichDeck">
+    <option value="deck1">Deck1</option>
+    <option value="deck2">Deck2</option>
+    <option value="deck3">Deck3</option>
+  </select>
+</div>
+<div id="cardsDiv">
+
+</div>
+{% endblock %}

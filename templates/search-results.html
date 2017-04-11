@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h1 class="whiteText resultsNum">{{results_num}} results found for '{{search_term}}'</h1>
+  {% for result in results %}
+    <form action="/card-info" method="POST">
+      <div class="searchRes">
+        <img src={{result['img']}}>
+        <button type="submit">{{result['name']}}</button>
+        <input type="hidden" name="card" value="{{result}}">
+      </div>
+    </form>
+  {% endfor %}
+
+{% endblock %}
